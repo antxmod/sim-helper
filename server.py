@@ -33,9 +33,17 @@ def rigs():
 def vr():
     return render_template('comingsoon.html')
 #contact me
-@app.route('/contact.html')
+@app.route('/contact.html', methods=['post', 'get'])
 def contact():
-    return render_template('contact.html')
+    message = ''
+    if request.method == 'POST':
+        name = request.form.get('Name')  # access the data inside 
+        email = request.form.get('Email')
+        phone = request.form.get('Phone No.')
+        msg = request.form.get('Message')
+        print(msg)
+        message='Sent'
+
 # #    Sign In and Sign Up
 # @app.route('/signup.html', methods=['GET', 'POST'])
 # def signup():
